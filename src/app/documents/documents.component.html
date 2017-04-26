@@ -1,0 +1,37 @@
+<div class="tab-pane fade in active">
+    <div class="form-horizontal">
+        <h4 class="head text-center">{{title}}</h4>
+        <br/>
+        <div class='row'>
+            <div class='col-xs-offset-1 col-xs-10 '>
+               
+                  
+                <table class="table">
+                    <tr>
+                        <th>#</th>
+                        <th>File Name</th>
+                        <th>Md5</th> 
+                       
+                    </tr>
+                    <tr *ngFor="let docs of documents| paginate: {itemsPerPage: 5, currentPage:page, id: '1'}; let i = index">
+                        <td>{{i + 1}}</td>
+                        <td><span class='link' (click)="openDoc(docs)">{{docs.fileName}}</span></td>
+                        <td>{{docs.md5}}</td>
+                        
+                    </tr>
+                </table>
+                 <pagination-controls (pageChange)="page = $event" id="1"
+                      maxSize="5"
+                      directionLinks="true"
+                      autoHide="true">
+                </pagination-controls>`
+            </div>
+        </div>
+
+        <div class="form-group text-center">
+            <a uiSref="address" class="btn btn-outline-rounded btn-default"> <span style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span> Previous</a>
+            <a uiSref="result" class="btn btn-outline-rounded btn-info"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></a>
+        </div>
+    </div>
+</div>
+
